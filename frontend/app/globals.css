@@ -1,42 +1,79 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
+    --background: #0a0a1a;
     --foreground: #ededed;
-  }
+    --neon-blue: #08f7fe;
+    --neon-pink: #ff31af;
+    --neon-purple: #9d00ff;
+    --neon-yellow: #f5f354;
 }
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    color: var(--foreground);
+    background: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+    html {
+        color-scheme: dark;
+    }
+}
+
+/* Cyberpunk glowing, animated bg */
+.cyberpunk-bg {
+    position: fixed;
+    z-index: -100;
+    inset: 0;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    background:
+        radial-gradient(
+            ellipse 100% 80% at 70% 10%,
+            var(--neon-blue) 0%,
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 80% 80% at 20% 80%,
+            var(--neon-pink) 0%,
+            transparent 70%
+        ),
+        radial-gradient(
+            ellipse 60% 40% at 80% 60%,
+            var(--neon-purple) 0%,
+            transparent 80%
+        );
+    opacity: 0.13;
+    filter: blur(6px);
+    transition: opacity 0.4s;
+}
+
+/* Optionnel: Filtre/grain pour effet rétro */
+.cyberpunk-noise {
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAAC0p0VRAAAAElBMVEUAAAAvLy8wMDA9PT1/f3+AgICvr6/+/v7B0AHfAAAABXRSTlMAMGXUlTkAAABgSURBVBjTY2RgAAADEgEGWT8zAAAAAElFTkSuQmCC");
+    opacity: 0.04;
+    mix-blend-mode: lighten;
 }
