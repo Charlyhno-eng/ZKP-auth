@@ -1,7 +1,7 @@
 package main
 
 import (
-	"go-zkp/usb"
+	"go-zkp/internal/usb"
 	"runtime"
 )
 

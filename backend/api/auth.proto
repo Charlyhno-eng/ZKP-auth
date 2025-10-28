@@ -1,0 +1,14 @@
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Authenticate(AuthRequest) returns (AuthChallenge);
+  rpc ChallengeResponse(ChallengeResponse) returns (AuthResult);
+}
+
+message RegisterRequest { string username = 1; string public_key = 2; }
+message RegisterResponse { string status = 1; }
+
+message AuthRequest { string username = 1; }
+message AuthChallenge { string challenge = 1; }
+
+message ChallengeResponse { string username = 1; string response = 2; }
+message AuthResult { bool authenticated = 1; }
