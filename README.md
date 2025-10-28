@@ -8,6 +8,25 @@ At the heart of the system is Zero Knowledge Proof authentication, which ensures
 
 ## Installation
 
+```bash
+cd frontend/
+npm install
+```
+
+To start the frontend :
+
+```bash
+cd frontend/
+npm run dev
+```
+
+To start the backend :
+
+```bash
+cd backend/
+go run main.go
+```
+
 ## Explanation of what ZKP (Zero Knowledge Proof) is
 
 A Zero Knowledge Proof is a cryptographic protocol allowing one party, called the prover, to convince another party, the verifier, that the prover possesses certain knowledge, without revealing any detail about that knowledge itself.
