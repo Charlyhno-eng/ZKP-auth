@@ -11,6 +11,9 @@ At the heart of the system is Zero Knowledge Proof authentication, which ensures
 ```bash
 cd frontend/
 npm install
+
+cd backend/
+go mod tidy
 ```
 
 To start the frontend :
