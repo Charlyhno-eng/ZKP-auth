@@ -42,6 +42,14 @@ A Zero Knowledge Proof is defined by three essential properties Completeness mea
 
 ## How the project works
 
+![Schema](public/schema.png)
+
+1. Click the Connection button
+2. Check if a USB drive is present and if it contains a private key
+3. "Yes, there is a USB drive with a private key" or "No USB drive detected" or "No private key on the USB drive"
+4. If there is a private key, check the database to see if there is an associated public key
+5. If so, the connection will be established
+
 In this project, the database contains a User table with two columns, "username" and "public_key". When a user wants to create an account, they will enter a username and generate a key pair. The public key is stored in the database at registration, and the private key is automatically downloaded as a file by the user. This file is meant to be saved on a USB drive, which does not have to be empty; any storage device will do.
 
 To sign in to the application, the user inserts their USB drive into the computer and clicks the "Login" button. The application reads the private key file and uses it to complete a challenge issued by the server. The server generates a random challenge message whenever an authentication attempt occurs, ensuring that each session is unique and secure.
