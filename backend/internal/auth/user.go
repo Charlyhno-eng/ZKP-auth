@@ -37,26 +37,22 @@ func CreateUser(db *sql.DB, username string) (RegisterResponse, error) {
 func FindPrivateKeyOnUSB() (string, error) {
 	hasUSB, mounts := usb.CheckUSB()
 	if !hasUSB {
-		return "", fmt.Errorf("No USB device detected")
+		return "", fmt.Errorf("usb_not_found")
 	}
+
 	for _, mount := range mounts {
 		authKeyPath := filepath.Join(mount, "auth_key")
 		info, err := os.Stat(authKeyPath)
 		if err != nil || !info.IsDir() {
 			continue
 		}
-		files, err := usb.ListFiles(authKeyPath)
-		if err != nil || len(files) == 0 {
-			continue
+
+		fpath := filepath.Join(authKeyPath, "private_key.txt")
+		data, err := os.ReadFile(fpath)
+		if err != nil {
+			return "", fmt.Errorf("private_key_not_found")
 		}
-		for _, file := range files {
-			fpath := filepath.Join(authKeyPath, file)
-			data, err := os.ReadFile(fpath)
-			if err != nil {
-				continue
-			}
-			return string(data), nil
-		}
+		return string(data), nil
 	}
-	return "", fmt.Errorf("No key found")
+	return "", fmt.Errorf("private_key_not_found")
 }

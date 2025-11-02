@@ -48,7 +48,7 @@ export default function RegisterModal({ open, onClose }: RegisterModalProps) {
 
       onClose();
     } else {
-      setError("Erreur lors de la création");
+      setError("Error during creation");
     }
   };
 
@@ -56,10 +56,10 @@ export default function RegisterModal({ open, onClose }: RegisterModalProps) {
     <Modal open={open} onClose={onClose}>
       <Box sx={style}>
         <Typography variant="h6" component="h2" sx={{ mb: 2 }}>
-          Créer un compte
+          Create an account
         </Typography>
         <TextField
-          label="Nom d'utilisateur"
+          label="Username"
           variant="filled"
           fullWidth
           value={username}
@@ -75,7 +75,7 @@ export default function RegisterModal({ open, onClose }: RegisterModalProps) {
           sx={{ background: "#1976d2", color: "#fff" }}
           onClick={handleRegister}
         >
-          Créer
+          Create
         </Button>
         {error && (
           <Typography color="error" sx={{ mt: 2 }}>

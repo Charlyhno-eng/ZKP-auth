@@ -24,9 +24,8 @@ export default function Navbar() {
         const { message } = await res.json();
         setLoginMessage(message);
       } else {
-        setLoginMessage(
-          "Aucune clé USB valide détectée ou utilisateur introuvable.",
-        );
+        const errorText = await res.text();
+        setLoginMessage(errorText);
       }
     } catch {
       setLoginMessage("Erreur de connexion au serveur.");
@@ -57,10 +56,10 @@ export default function Navbar() {
         </Typography>
         <Box>
           <Button color="inherit" onClick={handleLogin}>
-            Se connecter
+            Sign in
           </Button>
           <Button color="inherit" onClick={handleOpen}>
-            Créer un compte
+            Sign up
           </Button>
           <RegisterModal open={open} onClose={handleClose} />
         </Box>
