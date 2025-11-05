@@ -6,7 +6,7 @@ The backend is implemented in Go and communicates via REST APIs. Go is chosen fo
 
 At the heart of the system is Zero Knowledge Proof authentication, which ensures that users can log in securely without exposing sensitive credentials. The microservice setup means the authentication mechanism is self-contained and can be easily adopted in multiple applications. By leveraging a ZKP protocol, the project enables users to authenticate by proving possession of their private key, while the backend verifies the cryptographic proof using the public key linked to each account. This approach ensures maximum security, privacy, and user convenience, aligning with best practices for modern identity and access management.
 
-**(Linux only - Backend needs to be adapted for Windows or MacOS)**
+**(Linux only for the moment - Backend needs to be adapted for Windows or MacOS)**
 
 ## Installation
 
